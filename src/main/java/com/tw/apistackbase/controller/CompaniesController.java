@@ -33,4 +33,11 @@ public class CompaniesController {
         List<Company> companies = Company.findCompaniesByPageAndPageSize(page, pageSize);
         return companies;
     }
+
+    @PostMapping
+    public List<Company> addCompany(@RequestBody Company company) {
+        List<Company> companies = Company.createTestCompanies();
+        companies.add(company);
+        return companies;
+    }
 }

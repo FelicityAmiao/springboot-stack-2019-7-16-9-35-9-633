@@ -8,7 +8,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -125,6 +127,67 @@ public class ApiStackBaseApplicationTests {
 						"                \"age\": 20,\n" +
 						"                \"gender\": \"male\",\n" +
 						"                \"salary\": 6000\n" +
+						"            }\n" +
+						"        ]\n" +
+						"    }\n" +
+						"]"));
+	}
+
+	@Test
+	public void should_added_companies_when_call_add_companies_given_company() throws Exception {
+		mockMvc.perform(post("/companies").contentType("application/json;charset=UTF-8").content("{\n" +
+				"    \"companyName\": \"alimama\",\n" +
+				"    \"employeesNumber\": 1,\n" +
+				"    \"employees\": [\n" +
+				"        {\n" +
+				"            \"id\": 8,\n" +
+				"            \"name\": \"haha\",\n" +
+				"            \"age\": 22,\n" +
+				"            \"gender\": \"female\",\n" +
+				"            \"salary\": 7000\n" +
+				"        }\n" +
+				"    ]\n" +
+				"}"))
+				.andDo(print())
+				.andExpect(status().isOk())
+				.andExpect(content().contentType("application/json;charset=UTF-8"))
+				.andExpect(content().json("[\n" +
+						"    {\n" +
+						"        \"companyName\": \"alibaba\",\n" +
+						"        \"employeesNumber\": 1,\n" +
+						"        \"employees\": [\n" +
+						"            {\n" +
+						"                \"id\": 4,\n" +
+						"                \"name\": \"alibaba1\",\n" +
+						"                \"age\": 20,\n" +
+						"                \"gender\": \"male\",\n" +
+						"                \"salary\": 6000\n" +
+						"            }\n" +
+						"        ]\n" +
+						"    },\n" +
+						"    {\n" +
+						"        \"companyName\": \"1\",\n" +
+						"        \"employeesNumber\": 1,\n" +
+						"        \"employees\": [\n" +
+						"            {\n" +
+						"                \"id\": 4,\n" +
+						"                \"name\": \"alibaba1\",\n" +
+						"                \"age\": 20,\n" +
+						"                \"gender\": \"male\",\n" +
+						"                \"salary\": 6000\n" +
+						"            }\n" +
+						"        ]\n" +
+						"    },\n" +
+						"    {\n" +
+						"        \"companyName\": \"alimama\",\n" +
+						"        \"employeesNumber\": 1,\n" +
+						"        \"employees\": [\n" +
+						"            {\n" +
+						"                \"id\": 8,\n" +
+						"                \"name\": \"haha\",\n" +
+						"                \"age\": 22,\n" +
+						"                \"gender\": \"female\",\n" +
+						"                \"salary\": 7000\n" +
 						"            }\n" +
 						"        ]\n" +
 						"    }\n" +
