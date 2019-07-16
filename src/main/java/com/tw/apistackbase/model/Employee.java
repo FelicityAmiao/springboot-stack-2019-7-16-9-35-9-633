@@ -10,6 +10,16 @@ public class Employee {
     private String gender;
     private int salary;
 
+    public static Employee findEmployeesById(int emplpyeeId) {
+        List<Employee> testEmployees = createTestEmployees();
+        for(Employee employee: testEmployees) {
+            if(employee.id == emplpyeeId) {
+                return employee;
+            }
+        }
+        return null;
+    }
+
     public int getId() {
         return id;
     }
