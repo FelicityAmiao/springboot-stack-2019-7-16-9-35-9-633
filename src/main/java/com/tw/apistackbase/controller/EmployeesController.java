@@ -33,4 +33,11 @@ public class EmployeesController {
         return employees;
     }
 
+    @PostMapping("/employees")
+    public List<Employee> addEmployee(@RequestBody Employee employee) {
+        List<Employee> employees = Employee.createTestEmployees();
+        employees.add(employee);
+        return employees;
+    }
+
 }

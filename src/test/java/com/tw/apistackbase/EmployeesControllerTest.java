@@ -11,6 +11,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -84,6 +85,36 @@ class EmployeesControllerTest {
                         "        \"name\": \"alibaba1\",\n" +
                         "        \"age\": 20,\n" +
                         "        \"gender\": \"male\",\n" +
+                        "        \"salary\": 6000\n" +
+                        "    }\n" +
+                        "]"));
+    }
+
+    @Test
+    public void should_return_employees_when_call_add_employees_given_employee() throws Exception {
+        mockMvc.perform(post("/employees").contentType("application/json;charset=UTF-8").content("{\n" +
+                "    \"id\": 2,\n" +
+                "    \"name\": \"alimama\",\n" +
+                "    \"age\": 33,\n" +
+                "    \"gender\": \"female\",\n" +
+                "    \"salary\": 6000\n" +
+                "}"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json;charset=UTF-8"))
+                .andExpect(content().json("[\n" +
+                        "    {\n" +
+                        "        \"id\": 4,\n" +
+                        "        \"name\": \"alibaba1\",\n" +
+                        "        \"age\": 20,\n" +
+                        "        \"gender\": \"male\",\n" +
+                        "        \"salary\": 6000\n" +
+                        "    },\n" +
+                        "    {\n" +
+                        "        \"id\": 2,\n" +
+                        "        \"name\": \"alimama\",\n" +
+                        "        \"age\": 33,\n" +
+                        "        \"gender\": \"female\",\n" +
                         "        \"salary\": 6000\n" +
                         "    }\n" +
                         "]"));
