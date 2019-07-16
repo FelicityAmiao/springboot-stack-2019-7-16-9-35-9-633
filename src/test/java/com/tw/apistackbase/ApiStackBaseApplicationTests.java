@@ -194,4 +194,52 @@ public class ApiStackBaseApplicationTests {
 						"]"));
 	}
 
+	@Test
+	public void should_modify_companies_when_call_modify_companies_given_company() throws Exception {
+		mockMvc.perform(put("/companies/1").contentType("application/json;charset=UTF-8").content("{\n" +
+				"    \"companyName\": \"1\",\n" +
+				"    \"employeesNumber\": 333,\n" +
+				"    \"employees\": [\n" +
+				"        {\n" +
+				"            \"id\": 4,\n" +
+				"            \"name\": \"alibaba1\",\n" +
+				"            \"age\": 20,\n" +
+				"            \"gender\": \"male\",\n" +
+				"            \"salary\": 6000\n" +
+				"        }\n" +
+				"    ]\n" +
+				"}"))
+				.andDo(print())
+				.andExpect(status().isOk())
+				.andExpect(content().contentType("application/json;charset=UTF-8"))
+				.andExpect(content().json("[\n" +
+						"    {\n" +
+						"        \"companyName\": \"alibaba\",\n" +
+						"        \"employeesNumber\": 1,\n" +
+						"        \"employees\": [\n" +
+						"            {\n" +
+						"                \"id\": 4,\n" +
+						"                \"name\": \"alibaba1\",\n" +
+						"                \"age\": 20,\n" +
+						"                \"gender\": \"male\",\n" +
+						"                \"salary\": 6000\n" +
+						"            }\n" +
+						"        ]\n" +
+						"    },\n" +
+						"    {\n" +
+						"        \"companyName\": \"1\",\n" +
+						"        \"employeesNumber\": 333,\n" +
+						"        \"employees\": [\n" +
+						"            {\n" +
+						"                \"id\": 4,\n" +
+						"                \"name\": \"alibaba1\",\n" +
+						"                \"age\": 20,\n" +
+						"                \"gender\": \"male\",\n" +
+						"                \"salary\": 6000\n" +
+						"            }\n" +
+						"        ]\n" +
+						"    }\n" +
+						"]"));
+	}
+
 }

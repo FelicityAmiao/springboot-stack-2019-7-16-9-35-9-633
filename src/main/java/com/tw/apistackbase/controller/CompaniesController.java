@@ -40,4 +40,12 @@ public class CompaniesController {
         companies.add(company);
         return companies;
     }
+
+    @PutMapping("/{index}")
+    public List<Company> modifyCompany(@PathVariable int index, @RequestBody Company company) {
+        List<Company> companies = Company.createTestCompanies();
+        companies.remove(index);
+        companies.add(company);
+        return companies;
+    }
 }
