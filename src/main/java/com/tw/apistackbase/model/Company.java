@@ -18,6 +18,15 @@ public class Company {
         return null;
     }
 
+    public static List<Company> findCompaniesByPageAndPageSize(int page, int pageSize) {
+        List<Company> testCompanies = createTestCompanies();
+        List<Company> resultCompanies = new ArrayList<>();
+        for (int i = page-1; i < pageSize && i < testCompanies.size(); i++) {
+            resultCompanies.add(testCompanies.get(i));
+        }
+        return resultCompanies;
+    }
+
     public String getCompanyName() {
         return companyName;
     }

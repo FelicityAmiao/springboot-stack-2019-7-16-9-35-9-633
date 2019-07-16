@@ -9,12 +9,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/companies")
 public class CompaniesController {
-
-    @GetMapping
-    public List<Company> getAllCompanies() {
-        List<Company> companies = Company.createTestCompanies();
-        return companies;
-    }
+//
+//    @GetMapping
+//    public List<Company> getAllCompanies() {
+//        List<Company> companies = Company.createTestCompanies();
+//        return companies;
+//    }
 
     @GetMapping("/{companyName}")
     public @ResponseBody Company getOneSpecifyCompany(@PathVariable String companyName) {
@@ -26,5 +26,11 @@ public class CompaniesController {
     public @ResponseBody List<Employee> getSpecifyCompanyEmployees(@PathVariable String companyName) {
         Company company = Company.findCompanyByName(companyName);
         return company.getEmployees();
+    }
+
+    @GetMapping
+    public @ResponseBody List<Company> getCompaniesByPageAndPageSize(@RequestParam int page, @RequestParam int pageSize) {
+        List<Company> companies = Company.findCompaniesByPageAndPageSize(page, pageSize);
+        return companies;
     }
 }
