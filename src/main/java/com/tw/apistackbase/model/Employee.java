@@ -20,6 +20,15 @@ public class Employee {
         return null;
     }
 
+    public static List<Employee> findEmployeesByPageAndPageSize(int page, int pageSize) {
+        List<Employee> testEmployees = createTestEmployees();
+        List<Employee> resultEmployees = new ArrayList<>();
+        for (int i = page-1; i < pageSize && i < testEmployees.size(); i++) {
+            resultEmployees.add(testEmployees.get(i));
+        }
+        return resultEmployees;
+    }
+
     public int getId() {
         return id;
     }

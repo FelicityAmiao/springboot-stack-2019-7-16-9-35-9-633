@@ -54,4 +54,21 @@ class EmployeesControllerTest {
                         "    \"salary\": 6000\n" +
                         "}"));
     }
+
+    @Test
+    public void should_return_limit_employees_when_call_get_employees_by_page_and_size_given_1_5() throws Exception {
+        mockMvc.perform(get("/employees?page=1&pageSize=5"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json;charset=UTF-8"))
+                .andExpect(content().json("[\n" +
+                        "    {\n" +
+                        "        \"id\": 4,\n" +
+                        "        \"name\": \"alibaba1\",\n" +
+                        "        \"age\": 20,\n" +
+                        "        \"gender\": \"male\",\n" +
+                        "        \"salary\": 6000\n" +
+                        "    }\n" +
+                        "]"));
+    }
 }

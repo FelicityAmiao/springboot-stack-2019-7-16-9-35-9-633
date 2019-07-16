@@ -17,8 +17,14 @@ public class EmployeesController {
 
     @GetMapping("/{emplpyeeId}")
     public Employee getOneSpecifyEmployee(@PathVariable int emplpyeeId) {
-        Employee company = Employee.findEmployeesById(emplpyeeId);
-        return company;
+        Employee employee = Employee.findEmployeesById(emplpyeeId);
+        return employee;
+    }
+
+    @GetMapping("{page}{pageSize}")
+    public List<Employee> getEmployeesByPageAndPageSize(@RequestParam int page, @RequestParam int pageSize) {
+        List<Employee> employees = Employee.findEmployeesByPageAndPageSize(page, pageSize);
+        return employees;
     }
 
 }
