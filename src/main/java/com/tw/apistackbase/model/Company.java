@@ -8,6 +8,16 @@ public class Company {
     private int employeesNumber;
     private List<Employee> employees;
 
+    public static Company findCompanyByName(String companyName) {
+        List<Company> testCompanies = createTestCompanies();
+        for(Company company: testCompanies) {
+            if(company.companyName.equals(companyName)) {
+                return company;
+            }
+        }
+        return null;
+    }
+
     public String getCompanyName() {
         return companyName;
     }
@@ -39,6 +49,13 @@ public class Company {
         company.setEmployeesNumber(1);
         company.setEmployees(Employee.createTestEmployees());
         companies.add(company);
+
+        Company company1 = new Company();
+        company1.setCompanyName("1");
+        company1.setEmployeesNumber(1);
+        company1.setEmployees(Employee.createTestEmployees());
+        companies.add(company1);
         return companies;
     }
+
 }

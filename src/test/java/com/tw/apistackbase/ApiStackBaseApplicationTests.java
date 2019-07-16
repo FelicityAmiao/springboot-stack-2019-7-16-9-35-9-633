@@ -28,20 +28,54 @@ public class ApiStackBaseApplicationTests {
 				.andExpect(status().isOk())
 				.andExpect(content().contentType("application/json;charset=UTF-8"))
 				.andExpect(content().json("[\n" +
-						"\t{\n" +
-						"\t\t\"companyName\": \"alibaba\",\n" +
-						"\t\t\"employeesNumber\": 1,\n" +
-						"\t\t\"employees\": [\n" +
-						"\t\t\t{\n" +
-						"\t\t\t\t\"id\": 4,\n" +
-						"\t\t\t\t\"name\": \"alibaba1\",\n" +
-						"\t\t\t\t\"age\": 20,\n" +
-						"\t\t\t\t\"gender\": \"male\",\n" +
-						"\t\t\t\t\"salary\": 6000\n" +
-						"\t\t\t}\n" +
-						"\t\t]\n" +
-						"\t}\n" +
+						"    {\n" +
+						"        \"companyName\": \"alibaba\",\n" +
+						"        \"employeesNumber\": 1,\n" +
+						"        \"employees\": [\n" +
+						"            {\n" +
+						"                \"id\": 4,\n" +
+						"                \"name\": \"alibaba1\",\n" +
+						"                \"age\": 20,\n" +
+						"                \"gender\": \"male\",\n" +
+						"                \"salary\": 6000\n" +
+						"            }\n" +
+						"        ]\n" +
+						"    },\n" +
+						"    {\n" +
+						"        \"companyName\": \"1\",\n" +
+						"        \"employeesNumber\": 1,\n" +
+						"        \"employees\": [\n" +
+						"            {\n" +
+						"                \"id\": 4,\n" +
+						"                \"name\": \"alibaba1\",\n" +
+						"                \"age\": 20,\n" +
+						"                \"gender\": \"male\",\n" +
+						"                \"salary\": 6000\n" +
+						"            }\n" +
+						"        ]\n" +
+						"    }\n" +
 						"]"));
+	}
+
+	@Test
+	public void should_return_company_when_call_find_company_by_id_given_company_id() throws Exception {
+		mockMvc.perform(get("/companies/1"))
+				.andDo(print())
+				.andExpect(status().isOk())
+				.andExpect(content().contentType("application/json;charset=UTF-8"))
+				.andExpect(content().json("{\n" +
+						"    \"companyName\": \"1\",\n" +
+						"    \"employeesNumber\": 1,\n" +
+						"    \"employees\": [\n" +
+						"        {\n" +
+						"            \"id\": 4,\n" +
+						"            \"name\": \"alibaba1\",\n" +
+						"            \"age\": 20,\n" +
+						"            \"gender\": \"male\",\n" +
+						"            \"salary\": 6000\n" +
+						"        }\n" +
+						"    ]\n" +
+						"}"));
 	}
 
 }

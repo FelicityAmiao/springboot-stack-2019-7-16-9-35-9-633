@@ -1,9 +1,7 @@
 package com.tw.apistackbase.controller;
 
 import com.tw.apistackbase.model.Company;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,5 +13,11 @@ public class CompaniesController {
     public List<Company> getAllCompanies() {
         List<Company> companies = Company.createTestCompanies();
         return companies;
+    }
+
+    @GetMapping("/{companyName}")
+    public @ResponseBody Company getAllCompanies(@PathVariable String companyName) {
+        Company company = Company.findCompanyByName(companyName);
+        return company;
     }
 }
