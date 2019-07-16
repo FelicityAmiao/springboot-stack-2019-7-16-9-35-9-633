@@ -29,6 +29,17 @@ public class Employee {
         return resultEmployees;
     }
 
+    public static List<Employee> findEmployeesByGender(String gender) {
+        List<Employee> testEmployees = createTestEmployees();
+        List<Employee> genderEmployees = new ArrayList<>();
+        for(Employee employee: testEmployees) {
+            if(employee.gender.equals(gender)) {
+                genderEmployees.add(employee);
+            }
+        }
+        return genderEmployees;
+    }
+
     public int getId() {
         return id;
     }

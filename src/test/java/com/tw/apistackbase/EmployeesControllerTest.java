@@ -71,4 +71,21 @@ class EmployeesControllerTest {
                         "    }\n" +
                         "]"));
     }
+
+    @Test
+    public void should_return_specify_gender_employees_when_call_get_employees_by_gender_given_male() throws Exception {
+        mockMvc.perform(get("/employees?gender=male"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json;charset=UTF-8"))
+                .andExpect(content().json("[\n" +
+                        "    {\n" +
+                        "        \"id\": 4,\n" +
+                        "        \"name\": \"alibaba1\",\n" +
+                        "        \"age\": 20,\n" +
+                        "        \"gender\": \"male\",\n" +
+                        "        \"salary\": 6000\n" +
+                        "    }\n" +
+                        "]"));
+    }
 }

@@ -6,24 +6,30 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/employees")
+@RequestMapping
 public class EmployeesController {
 
-    @GetMapping
+    @GetMapping("/employees")
     public List<Employee> getAllEmployees() {
         List<Employee> employees = Employee.createTestEmployees();
         return employees;
     }
 
-    @GetMapping("/{emplpyeeId}")
+    @GetMapping("/employees/{emplpyeeId}")
     public Employee getOneSpecifyEmployee(@PathVariable int emplpyeeId) {
         Employee employee = Employee.findEmployeesById(emplpyeeId);
         return employee;
     }
 
-    @GetMapping("{page}{pageSize}")
+    @GetMapping("/employees{page}{pageSize}")
     public List<Employee> getEmployeesByPageAndPageSize(@RequestParam int page, @RequestParam int pageSize) {
         List<Employee> employees = Employee.findEmployeesByPageAndPageSize(page, pageSize);
+        return employees;
+    }
+
+    @GetMapping("/employees{gender}")
+    public List<Employee> getEmployeeByGender(@RequestParam String gender) {
+        List<Employee> employees = Employee.findEmployeesByGender(gender);
         return employees;
     }
 
