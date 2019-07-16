@@ -242,4 +242,27 @@ public class ApiStackBaseApplicationTests {
 						"]"));
 	}
 
+	@Test
+	public void should_delete_companies_when_call_delete_companies_given_index() throws Exception {
+		mockMvc.perform(delete("/companies/1"))
+				.andDo(print())
+				.andExpect(status().isOk())
+				.andExpect(content().contentType("application/json;charset=UTF-8"))
+				.andExpect(content().json("[\n" +
+						"    {\n" +
+						"        \"companyName\": \"alibaba\",\n" +
+						"        \"employeesNumber\": 1,\n" +
+						"        \"employees\": [\n" +
+						"            {\n" +
+						"                \"id\": 4,\n" +
+						"                \"name\": \"alibaba1\",\n" +
+						"                \"age\": 20,\n" +
+						"                \"gender\": \"male\",\n" +
+						"                \"salary\": 6000\n" +
+						"            }\n" +
+						"        ]\n" +
+						"    }\n" +
+						"]"));
+	}
+
 }

@@ -48,4 +48,11 @@ public class CompaniesController {
         companies.add(company);
         return companies;
     }
+
+    @DeleteMapping("/{index}")
+    public List<Company> deleteCompany(@PathVariable int index){
+        List<Company> companies = Company.createTestCompanies();
+        companies.remove(index);
+        return companies;
+    }
 }
