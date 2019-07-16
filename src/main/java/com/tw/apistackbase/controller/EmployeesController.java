@@ -48,4 +48,11 @@ public class EmployeesController {
         return employees;
     }
 
+    @DeleteMapping("/employees/{index}")
+    public List<Employee> deleteEmployee(@PathVariable int index){
+        List<Employee> employees = Employee.createTestEmployees();
+        employees.remove(index);
+        return employees;
+    }
+
 }
