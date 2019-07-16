@@ -21,41 +21,41 @@ public class ApiStackBaseApplicationTests {
 	@Autowired
 	private MockMvc mockMvc;
 
-//	@Test
-//	public void should_return_companies_when_call_get_all_companies() throws Exception {
-//		mockMvc.perform(get("/companies"))
-//				.andDo(print())
-//				.andExpect(status().isOk())
-//				.andExpect(content().contentType("application/json;charset=UTF-8"))
-//				.andExpect(content().json("[\n" +
-//						"    {\n" +
-//						"        \"companyName\": \"alibaba\",\n" +
-//						"        \"employeesNumber\": 1,\n" +
-//						"        \"employees\": [\n" +
-//						"            {\n" +
-//						"                \"id\": 4,\n" +
-//						"                \"name\": \"alibaba1\",\n" +
-//						"                \"age\": 20,\n" +
-//						"                \"gender\": \"male\",\n" +
-//						"                \"salary\": 6000\n" +
-//						"            }\n" +
-//						"        ]\n" +
-//						"    },\n" +
-//						"    {\n" +
-//						"        \"companyName\": \"1\",\n" +
-//						"        \"employeesNumber\": 1,\n" +
-//						"        \"employees\": [\n" +
-//						"            {\n" +
-//						"                \"id\": 4,\n" +
-//						"                \"name\": \"alibaba1\",\n" +
-//						"                \"age\": 20,\n" +
-//						"                \"gender\": \"male\",\n" +
-//						"                \"salary\": 6000\n" +
-//						"            }\n" +
-//						"        ]\n" +
-//						"    }\n" +
-//						"]"));
-//	}
+	@Test
+	public void should_return_companies_when_call_get_all_companies() throws Exception {
+		mockMvc.perform(get("/companies"))
+				.andDo(print())
+				.andExpect(status().isOk())
+				.andExpect(content().contentType("application/json;charset=UTF-8"))
+				.andExpect(content().json("[\n" +
+						"    {\n" +
+						"        \"companyName\": \"alibaba\",\n" +
+						"        \"employeesNumber\": 1,\n" +
+						"        \"employees\": [\n" +
+						"            {\n" +
+						"                \"id\": 4,\n" +
+						"                \"name\": \"alibaba1\",\n" +
+						"                \"age\": 20,\n" +
+						"                \"gender\": \"male\",\n" +
+						"                \"salary\": 6000\n" +
+						"            }\n" +
+						"        ]\n" +
+						"    },\n" +
+						"    {\n" +
+						"        \"companyName\": \"1\",\n" +
+						"        \"employeesNumber\": 1,\n" +
+						"        \"employees\": [\n" +
+						"            {\n" +
+						"                \"id\": 4,\n" +
+						"                \"name\": \"alibaba1\",\n" +
+						"                \"age\": 20,\n" +
+						"                \"gender\": \"male\",\n" +
+						"                \"salary\": 6000\n" +
+						"            }\n" +
+						"        ]\n" +
+						"    }\n" +
+						"]"));
+	}
 
 	@Test
 	public void should_return_company_when_call_find_company_by_id_given_company_id() throws Exception {
