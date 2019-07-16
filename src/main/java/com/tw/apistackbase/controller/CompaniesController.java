@@ -1,6 +1,7 @@
 package com.tw.apistackbase.controller;
 
 import com.tw.apistackbase.model.Company;
+import com.tw.apistackbase.model.Employee;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,8 +17,14 @@ public class CompaniesController {
     }
 
     @GetMapping("/{companyName}")
-    public @ResponseBody Company getAllCompanies(@PathVariable String companyName) {
+    public @ResponseBody Company getOneSpecifyCompany(@PathVariable String companyName) {
         Company company = Company.findCompanyByName(companyName);
         return company;
+    }
+
+    @GetMapping("/{companyName}/employees")
+    public @ResponseBody List<Employee> getSpecifyCompanyEmployees(@PathVariable String companyName) {
+        Company company = Company.findCompanyByName(companyName);
+        return company.getEmployees();
     }
 }

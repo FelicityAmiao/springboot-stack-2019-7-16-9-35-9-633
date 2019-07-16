@@ -78,4 +78,21 @@ public class ApiStackBaseApplicationTests {
 						"}"));
 	}
 
+	@Test
+	public void should_return_employees_when_call_find_company_by_name_given_company_name() throws Exception {
+		mockMvc.perform(get("/companies/1/employees"))
+				.andDo(print())
+				.andExpect(status().isOk())
+				.andExpect(content().contentType("application/json;charset=UTF-8"))
+				.andExpect(content().json("[\n" +
+						"    {\n" +
+						"        \"id\": 4,\n" +
+						"        \"name\": \"alibaba1\",\n" +
+						"        \"age\": 20,\n" +
+						"        \"gender\": \"male\",\n" +
+						"        \"salary\": 6000\n" +
+						"    }\n" +
+						"]"));
+	}
+
 }
