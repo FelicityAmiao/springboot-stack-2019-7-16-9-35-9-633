@@ -12,6 +12,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -112,6 +113,29 @@ class EmployeesControllerTest {
                         "    },\n" +
                         "    {\n" +
                         "        \"id\": 2,\n" +
+                        "        \"name\": \"alimama\",\n" +
+                        "        \"age\": 33,\n" +
+                        "        \"gender\": \"female\",\n" +
+                        "        \"salary\": 6000\n" +
+                        "    }\n" +
+                        "]"));
+    }
+
+    @Test
+    public void should_return_employees_when_call_modify_employees_given_0_employee() throws Exception {
+        mockMvc.perform(put("/employees/0").contentType("application/json;charset=UTF-8").content("{\n" +
+                "    \"id\": 3,\n" +
+                "    \"name\": \"alimama\",\n" +
+                "    \"age\": 33,\n" +
+                "    \"gender\": \"female\",\n" +
+                "    \"salary\": 6000\n" +
+                "}"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json;charset=UTF-8"))
+                .andExpect(content().json("[\n" +
+                        "    {\n" +
+                        "        \"id\": 3,\n" +
                         "        \"name\": \"alimama\",\n" +
                         "        \"age\": 33,\n" +
                         "        \"gender\": \"female\",\n" +

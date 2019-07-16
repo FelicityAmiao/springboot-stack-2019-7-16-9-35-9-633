@@ -40,4 +40,12 @@ public class EmployeesController {
         return employees;
     }
 
+    @PutMapping("/employees/{index}")
+    public List<Employee> modifyEmployee(@PathVariable int index, @RequestBody Employee employee) {
+        List<Employee> employees = Employee.createTestEmployees();
+        employees.remove(index);
+        employees.add(employee);
+        return employees;
+    }
+
 }
